@@ -7,6 +7,9 @@ namespace csharp_burgershack.Models
       this.Name = name;
       this.Description = description;
       this.Price = price;
+    }
+    public Drink()
+    {
 
     }
     public string Name { get; set; }

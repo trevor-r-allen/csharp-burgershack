@@ -21,14 +21,23 @@ namespace csharp_burgershack.Repositories
       return _db.Query<Burger>(sql);
     }
 
-    internal Burger GetById()
+    internal Burger GetById(int burgerId)
     {
-      throw new NotImplementedException();
+      string sql = "SELECT * FROM burgers WHERE burgerId = @Id;";
+      return _db.QueryFirstOrDefault<Burger>(sql, new { burgerId });
     }
 
     internal Burger Create(Burger newBurger)
     {
-      throw new NotImplementedException();
+      string sql = @"
+        INSERT INTO burgers
+        (name, description, price)
+        VALUES
+        (@Name, @Description, @Price);
+        SELECT LAST_INSERT_ID();";
+      int id = _db.ExecuteScalar<int>(sql, newBurger);
+      newBurger.Id = id;
+      return newBurger;
     }
 
     internal Burger Edit(Burger burger)

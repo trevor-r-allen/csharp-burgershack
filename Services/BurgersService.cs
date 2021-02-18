@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using csharp_burgershack.Models;
 using csharp_burgershack.Repositories;
 
+
 namespace csharp_burgershack.Services
 {
   public class BurgersService
@@ -20,7 +21,7 @@ namespace csharp_burgershack.Services
 
     internal Burger Get(int burgerId)
     {
-      Burger burger = _burgersRepository.GetById();
+      Burger burger = _burgersRepository.GetById(burgerId);
       if (burger == null)
       {
         throw new Exception("Invalid Id");

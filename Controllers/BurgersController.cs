@@ -20,7 +20,7 @@ namespace BurgersController
     {
       try
       {
-        return _burgersService.Get();
+        return Ok(_burgersService.Get());
       }
       catch (System.Exception err)
       {
@@ -29,12 +29,12 @@ namespace BurgersController
       }
     }
 
-    [HttpGet]
+    [HttpGet("{burgerId}")]
     public ActionResult<Burger> Get(int burgerId)
     {
       try
       {
-        return _burgersService.Get(burgerId);
+        return Ok(_burgersService.Get(burgerId));
       }
       catch (System.Exception err)
       {
@@ -48,7 +48,7 @@ namespace BurgersController
     {
       try
       {
-        return _burgersService.Create(newBurger);
+        return Ok(_burgersService.Create(newBurger));
       }
       catch (System.Exception err)
       {
@@ -57,13 +57,13 @@ namespace BurgersController
       }
     }
 
-    [HttpPut]
+    [HttpPut("{burgerId}")]
     public ActionResult<Burger> Edit([FromBody] Burger editedBurger, int burgerId)
     {
       try
       {
         editedBurger.Id = burgerId;
-        return _burgersService.Edit(editedBurger);
+        return Ok(_burgersService.Edit(editedBurger));
       }
       catch (System.Exception err)
       {
@@ -72,12 +72,12 @@ namespace BurgersController
       }
     }
 
-    [HttpDelete]
+    [HttpDelete("{burgerId}")]
     public ActionResult<string> Delete(int burgerId)
     {
       try
       {
-        return _burgersService.Delete(burgerId);
+        return Ok(_burgersService.Delete(burgerId));
       }
       catch (System.Exception err)
       {
