@@ -23,7 +23,7 @@ namespace csharp_burgershack.Repositories
 
     internal Burger GetById(int burgerId)
     {
-      string sql = "SELECT * FROM burgers WHERE burgerId = @Id;";
+      string sql = "SELECT * FROM burgers WHERE Id = @burgerId;";
       return _db.QueryFirstOrDefault<Burger>(sql, new { burgerId });
     }
 
