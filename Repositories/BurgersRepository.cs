@@ -42,12 +42,18 @@ namespace csharp_burgershack.Repositories
 
     internal Burger Edit(Burger burger)
     {
-      throw new NotImplementedException();
+      string sql = @"
+        UPDATE burgers
+        SET description = @Description, price = @Price
+        WHERE id = @Id;
+        SELECT * FROM burgers WHERE id = @Id;";
+      return _db.QueryFirstOrDefault<Burger>(sql, burger);
     }
 
-    internal void Delete(int burgerId)
+    internal void Delete(Burger burger)
     {
-      throw new NotImplementedException();
+      string sql = "DELETE FROM burgers WHERE id = @Id";
+      _db.Execute(sql, burger);
     }
   }
 }
