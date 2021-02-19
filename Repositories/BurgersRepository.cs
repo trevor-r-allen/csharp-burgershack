@@ -50,10 +50,10 @@ namespace csharp_burgershack.Repositories
       return _db.QueryFirstOrDefault<Burger>(sql, burger);
     }
 
-    internal void Delete(Burger burger)
+    internal void Delete(int burgerId)
     {
-      string sql = "DELETE FROM burgers WHERE id = @Id";
-      _db.Execute(sql, burger);
+      string sql = "DELETE FROM burgers WHERE id = @burgerId LIMIT 1";
+      _db.Execute(sql, new { burgerId });
     }
   }
 }

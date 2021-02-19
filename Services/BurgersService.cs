@@ -46,7 +46,7 @@ namespace csharp_burgershack.Services
 
     internal string Delete(int burgerId)
     {
-      Burger burger = Get(burgerId);
+      Get(burgerId);
       _burgersRepository.Delete(burgerId);
       return "Successfully Deleted";
     }
